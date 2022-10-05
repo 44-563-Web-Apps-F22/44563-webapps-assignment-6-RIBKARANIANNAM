@@ -12,14 +12,14 @@
 <h1>Musician guess by Ribkarani Annam</h1>
 
 <form>
-    <label for="persons_name">Enter the secret musician name </label>
+    <label for="persons_name">Enter the secret musician name</label>
     <input type ="password" id="persons_name" name="persons_name" min=10 max=50 step=2 value="John Lennon"> 
     <br>
 
     <label for="input-text"> Guess the musician </label>
     <input type ="text" id="input_text" name="input_text" autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Check the guess">
+    <input type="button" class="btn btn-primary" onclick="checkGuess()" value="Check the guess">
 </form>
 
 
@@ -38,16 +38,17 @@ function checkGuess(){
     console.log("Getting form values")
     persons_name = document.getElementById("persons_name").value
     input_text  = document.getElementById("input_text").value
+    out = document.getElementById("result")
         
     if(persons_name === input_text){
-        correct++
-        document.getElementById("result").innerHTML="Correct "+correct;
-        alert("You got it right");
+        correct=correct+1
+        alert("You got it right")
+        out.innerHTML="coorect-"+correct+","+"wrong - "+wrong
     }
     else{
-        wrong++
-        document.getElementById("result").innerHTML="Wrong "+wrong;
-        alert("Wrong Musician");
+        wrong=wrong+1
+        alert("Wrong Musician")
+        out.innerHTML ="coorect-"+correct+","+"wrong - "+wrong
 }
 }
 function swapImage(){

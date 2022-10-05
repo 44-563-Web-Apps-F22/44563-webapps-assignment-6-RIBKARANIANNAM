@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Vacation page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+ <!-- Latest compiled JavaScript -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+ </head>
+<body>
+
+<h1>Ribkarani Annam selects a vacation</h1>
+
+<form>
+    <label for="persons_name">Travel by Air</label>
+    <input type ="checkbox" id="persons_name" name="persons_name" min=10 max=50 step=2 value="True"> 
+    <br>
+
+    <label for="input-text"> Domestic </label>
+    <input type ="checkbox" id="input_text" name="input_text" value=True  autofocus> <br>
+
+    <label for="cb1_onion">Resort</label>
+    <input type="checkbox" id="cb1_onion" name="topping3" value=False checked><br>
+
+    <input type="button"   onclick="selectVacation()" value="Select a vacation">
+</form>
+
+<form >
+    <label for="city">Enter a city</label>
+    <input type ="text" id="city" name="city" min=10 max=50 step=2 value="city"> <br>
+
+    <label for="price">Enter price </label>
+    <input type ="text" id="price" name="price" autofocus> <br>
+
+    <input type="button" onclick="updateVacation()" value="Update the vacation">
+</form>
+
+<p id="result">To store the Results </p>
+
+<script> 
+    let my_vacation=""
+    function selectVacation(){
+        my_vacation=""
+        console.log("Getting form values")
+        Travel = document.getElementById("persons_name").checked
+        domestic = document.getElementById("input_text").checked
+        resort = document.getElementById("cb1_onion").checked
+        confirmed = confirm("Are these the values? "+name+" and "+text)
+
+        out = document.getElementById("result")
+        if(confirmed){
+            out.innerHTML = "Values were confirmedn"
+
+        } else{
+            out.innerHTML="Values were not confirmed"
+
+        }
+
+    }
+    
+    function updateVacation(){
+        
+        Travel = document.getElementById("city").value
+        domestic = document.getElementById("price").value
+        my_vacation=city
+    }
+    </script>
+    
+    </body>
+    </html>

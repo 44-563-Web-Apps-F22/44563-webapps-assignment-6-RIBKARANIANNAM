@@ -12,60 +12,66 @@
 <h1> Ribkarani Annam computes discounts”</h1>
 
 <form>
-    <label for="persons_name">Enter the secret musician name </label>
-    <input type ="password" id="persons_name" name="persons_name" min=10 max=50 step=2 value="John Lennon"> 
+    <label for="persons_name">Enter base amount</label>
+    <input type ="number" id="persons_name" name="persons_name" min=10 max=50 step=2 value="20"> 
     <br>
 
-    <label for="input-text"> Guess the musician </label>
-    <input type ="text" id="input_text" name="input_text" autofocus> <br>
+    <label for="input-text"> Enter the discount percentage </label>
+    <input type ="number" id="input_text" name="input_text" value=10  autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Check the guess">
+    <input type="button" onclick="discount()"   onclick="discount()" value="Apply discount">
 </form>
 
 
-<p id="result">To store the Results </p>
+<p id="result1">This text will be replaced </p>
 
-<div>
-    <img  id= "image" src="mosquito.jpg" class="rounded mx-auto d-block" onclick="swapImage()" alt="mosquito" style="width: 100px; height : 100px;">
-</div>
+<form  >
+    <input type="radio" id="rg1_red" name="color" value="times"  onclick="chooseOp()" checked >
+    <label for="rg1_red">*</label></br>
+
+    <input type="radio" id="rg1_blue" name="color" onclick="chooseOp()" value="divide">
+    <label for="rg1_blue">/</label></br>
+
+    <input type="radio" id="rg1_green" name="color"  onclick="chooseOp()" value="exponent">
+    <label for="rg1_green">**</label></br>
+
+    <input type="button" class="btn btn-success" onclick="chooseOp()" value="Get values from radio group">
+  </form>
+
+  <p id="result">This text will be replaced </p>
+
 
 <script> 
-var correct = 0;
-var wrong = 0;
-useImage=1
 
-function checkGuess(){
+function discount(){
+    let result=""
     console.log("Getting form values")
-    persons_name = document.getElementById("persons_name").value
-    input_text  = document.getElementById("input_text").value
-        
-    if(persons_name === input_text){
-        correct++
-        document.getElementById("result").innerHTML="Correct "+correct;
-        alert("You got it right");
+    base = document.getElementById("persons_name").value
+    discountPercentage = document.getElementById("input_text").value
+    for(let i=1;i<6;i++)
+    {
+        result=result+i*base+""
     }
-    else{
-        wrong++
-        document.getElementById("result").innerHTML="Wrong "+wrong;
-        alert("Wrong Musician");
+    out = document.getElementById("result1")
+    out.innerHTML = "Discounted amounts for "+base+" value are: "+result
 }
-}
-function swapImage(){
-    switch(useImage){
-        case 1 :useImage=useImage+1
 
-                document.getElementById("image").src = "ant.jpg";
+function chooseOp(){
     
-                break;
-        case 2 :useImage=useImage+1
-                document.getElementById("image").src = "mosquito.jpg";
-                break;
-        case 3 :useImage=1
-                document.getElementById("image").src = "red butterfly.jpg";
-                break;
-    }
+    base = document.getElementById("persons_name").value
+    discountPercentage = document.getElementById("input_text").value
+    redOpt = document.getElementById("rg1_red").checked
+    blueOpt = document.getElementById("rg1_blue").checked
+    greenOpt = document.getElementById("rg1_green").checked
+    out = document.getElementById("result")
+    if(redOpt==true)
+    out.innerHTML = base*discountPercentage
+    if(blueOpt==true)
+    out.innerHTML = base/discountPercentage
+     if(greenOpt==true)
+    out.innerHTML = base**discountPercentage
 }
 </script>
 
 </body>
-</html> 
+</html>
