@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>discount page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+ <!-- Latest compiled JavaScript -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+ </head>
+<body>
+
+<h1> Ribkarani Annam computes discounts”</h1>
+
+<form>
+    <label for="persons_name">Enter the secret musician name </label>
+    <input type ="password" id="persons_name" name="persons_name" min=10 max=50 step=2 value="John Lennon"> 
+    <br>
+
+    <label for="input-text"> Guess the musician </label>
+    <input type ="text" id="input_text" name="input_text" autofocus> <br>
+
+    <input type="button" onclick="checkGuess()" value="Check the guess">
+</form>
+
+
+<p id="result">To store the Results </p>
+
+<div>
+    <img  id= "image" src="mosquito.jpg" class="rounded mx-auto d-block" onclick="swapImage()" alt="mosquito" style="width: 100px; height : 100px;">
+</div>
+
+<script> 
+var correct = 0;
+var wrong = 0;
+useImage=1
+
+function checkGuess(){
+    console.log("Getting form values")
+    persons_name = document.getElementById("persons_name").value
+    input_text  = document.getElementById("input_text").value
+        
+    if(persons_name === input_text){
+        correct++
+        document.getElementById("result").innerHTML="Correct "+correct;
+        alert("You got it right");
+    }
+    else{
+        wrong++
+        document.getElementById("result").innerHTML="Wrong "+wrong;
+        alert("Wrong Musician");
+}
+}
+function swapImage(){
+    switch(useImage){
+        case 1 :useImage=useImage+1
+
+                document.getElementById("image").src = "ant.jpg";
+    
+                break;
+        case 2 :useImage=useImage+1
+                document.getElementById("image").src = "mosquito.jpg";
+                break;
+        case 3 :useImage=1
+                document.getElementById("image").src = "red butterfly.jpg";
+                break;
+    }
+}
+</script>
+
+</body>
+</html> 
