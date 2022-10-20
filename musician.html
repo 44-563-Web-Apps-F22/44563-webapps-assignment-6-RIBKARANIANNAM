@@ -2,19 +2,20 @@
 <html>
  <head>
     <title>musician.html</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
- <!-- Latest compiled JavaScript -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
  </head>
-<body>
+ </head>
+<body style="padding: 50px; background-color: rgb(206, 172, 35); color: aliceblue;" >
+    
 
-<h1>Musician guess by Ribkarani Annam</h1>
+<h1 style="text-align:center;">Musician guess by Ribkarani Annam</h1>
 
-<form>
-    <label for="persons_name">Enter the secret musician name</label>
+<form style="background-color:rgb(86, 21, 183); text-align: center; padding: 20px; margin-left: 40px; margin-right: 40px;">
+
+    <label style="text-align: center;" text:white; for="persons_name">Enter the secret musician name</label>
     <input type ="password" id="persons_name" name="persons_name" min=10 max=50 step=2 value="John Lennon"> 
     <br>
+    <h1 style="padding-left: 2px;"></h1>
 
     <label for="input-text"> Guess the musician </label>
     <input type ="text" id="input_text" name="input_text" autofocus> <br>
@@ -25,14 +26,12 @@
 
 <p id="result">To store the Results </p>
 
-<div>
-    <img  id= "image" src="mosquito.jpg" class="rounded mx-auto d-block" onclick="swapImage()" alt="mosquito" style="width: 100px; height : 100px;">
-</div>
+
 
 <script> 
 var correct = 0;
 var wrong = 0;
-useImage=1
+useImage = 1;
 
 function checkGuess(){
     console.log("Getting form values")
@@ -50,7 +49,24 @@ function checkGuess(){
         alert("Wrong Musician")
         out.innerHTML ="coorect-"+correct+","+"wrong - "+wrong
 }
+   if(wrong==3){
+        document.getElementById("bonus").onclick = Bonus()
+    }
+ document.getElementById("result").innerHTML = "wrong guess :" + wrong + "\n correct guess :" + correct
+
+   function Bonus(){
+    alert("Sorry, game over" )
 }
+}
+</script>
+
+<div style="text-align: center;padding: 75px 75px"><img src="mosquito.jpg" id="image" height="100px" width="100px" onclick="swapImage()">
+    </div>
+
+
+<script>
+    useImage = 1;
+
 function swapImage(){
     switch(useImage){
         case 1 :useImage=useImage+1
